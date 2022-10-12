@@ -24,7 +24,7 @@ public class Application {
 
 	@Bean
 			public AmazonWorkMail amazonWorkMailClient(){
-		return  AmazonWorkMailClientBuilder.standard().withRegion("us-west-2").defaultClient();
+		return  AmazonWorkMailClientBuilder.standard().withRegion("us-west-2").build();
 //		AWSCredentialsProvider
 	}
 

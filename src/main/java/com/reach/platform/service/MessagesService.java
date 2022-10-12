@@ -48,7 +48,7 @@ public class MessagesService {
 
         String entityId = createUserResult.getUserId();
         UpdatePrimaryEmailAddressRequest updatePrimaryEmailAddressRequest = new UpdatePrimaryEmailAddressRequest().withEmail(username+ "@reach-apps.awsapps.com").withEntityId(entityId).withOrganizationId(ORG_ID);
-        amazonWorkMail.updatePrimaryEmailAddress(updatePrimaryEmailAddressRequest);
+//        amazonWorkMail.updatePrimaryEmailAddress(updatePrimaryEmailAddressRequest);
         return true;
     }
 }
