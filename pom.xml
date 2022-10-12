@@ -43,6 +43,28 @@
 			<version>9.0.0</version>
 		</dependency>
 		<!-- end::tests[] -->
+
+		<dependency>
+			<groupId>com.amazonaws</groupId>
+			<artifactId>aws-java-sdk-core</artifactId>
+			<version>1.12.315</version>
+		</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/com.amazonaws/jmespath-java -->
+		<dependency>
+			<groupId>com.amazonaws</groupId>
+			<artifactId>jmespath-java</artifactId>
+			<version>1.12.315</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-workmail -->
+		<dependency>
+			<groupId>com.amazonaws</groupId>
+			<artifactId>aws-java-sdk-workmail</artifactId>
+			<version>1.12.319</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

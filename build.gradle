@@ -23,6 +23,20 @@ dependencies {
 	// end::tests[]
 	implementation group: "com.twilio.sdk", name: "twilio", version: "7.45.1"
 	implementation group: "com.sparkjava", name: "spark-core", version: "2.7.1"
+	// https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-workmail
+	implementation group: 'com.amazonaws', name: 'aws-java-sdk-workmail', version: '1.12.319'
+// https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-core
+	implementation group: 'com.amazonaws', name: 'aws-java-sdk-core', version: '1.12.319'
+	// https://mvnrepository.com/artifact/com.amazonaws/jmespath-java
+	implementation group: 'com.amazonaws', name: 'jmespath-java', version: '1.0'
+// https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk
+	implementation group: 'com.amazonaws', name: 'aws-java-sdk', version: '1.12.319'
+	// https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-bom
+	implementation group: 'com.amazonaws', name: 'aws-java-sdk-bom', version: '1.11.115', ext: 'pom'
+	// https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-sts
+	implementation group: 'com.amazonaws', name: 'aws-java-sdk-sts', version: '1.12.319'
+
+
 }
 
 test {

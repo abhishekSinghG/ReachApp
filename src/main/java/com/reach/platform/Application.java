@@ -2,6 +2,13 @@ package com.reach.platform;
 
 import java.util.Arrays;
 
+import com.amazonaws.auth.AWSCredentialsProvider;
+import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
+import com.amazonaws.client.AwsSyncClientParams;
+import com.amazonaws.services.workmail.AmazonWorkMail;
+import com.amazonaws.services.workmail.AmazonWorkMailAsyncClient;
+import com.amazonaws.services.workmail.AmazonWorkMailClient;
+import com.amazonaws.services.workmail.AmazonWorkMailClientBuilder;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,6 +21,13 @@ public class Application {
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
+
+	@Bean
+			public AmazonWorkMail amazonWorkMailClient(){
+		return  AmazonWorkMailClientBuilder.defaultClient();
+//		AWSCredentialsProvider
+	}
+
 
 	@Bean
 	public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
