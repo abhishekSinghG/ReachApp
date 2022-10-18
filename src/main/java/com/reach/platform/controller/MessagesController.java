@@ -20,7 +20,7 @@ public class MessagesController {
 
 
 	@GetMapping("/account/id/{id}/user/{username}/password/{password}")
-	public boolean createUser(@PathVariable final String id, @PathVariable final String username, @PathVariable final String password) {
+	public String createUser(@PathVariable final String id, @PathVariable final String username, @PathVariable final String password) {
 		return messagesService.createUser(id, username, password);
 	}
 }
