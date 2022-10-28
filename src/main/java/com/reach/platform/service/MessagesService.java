@@ -3,8 +3,7 @@ package com.reach.platform.service;
 import com.amazonaws.services.workmail.AmazonWorkMail;
 import com.amazonaws.services.workmail.AmazonWorkMailAsyncClient;
 import com.amazonaws.services.workmail.AmazonWorkMailClient;
-import com.amazonaws.services.workmail.model.CreateAliasRequest;
-import com.amazonaws.services.workmail.model.UpdatePrimaryEmailAddressRequest;
+import com.amazonaws.services.workmail.model.*;
 import com.reach.platform.models.MessageResponse;
 import com.twilio.Twilio;
 import com.twilio.base.ResourceSet;
@@ -14,8 +13,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.amazonaws.services.workmail.model.CreateUserRequest;
-import com.amazonaws.services.workmail.model.CreateUserResult;
 
 @Service
 public class MessagesService {
@@ -56,5 +53,14 @@ public class MessagesService {
 //        UpdatePrimaryEmailAddressRequest updatePrimaryEmailAddressRequest = new UpdatePrimaryEmailAddressRequest().withEmail(username+ "@reach-apps.awsapps.com").withEntityId(entityId).withOrganizationId(ORG_ID);
 //        amazonWorkMail.updatePrimaryEmailAddress(updatePrimaryEmailAddressRequest);
         return "mailbox1@reach-apps.awsapps.com";
+    }
+
+    public boolean deleteAlias(String alias, String username) {
+        String entityId = "bbef253a-eed7-4428-aaaf-cc664773758a";
+        DeleteAliasRequest deleteAliasRequest = new DeleteAliasRequest().withAlias(alias).withEntityId(entityId).withOrganizationId(ORG_ID);
+        DeleteAliasResult deleteAliasResult = amazonWorkMail.deleteAlias(deleteAliasRequest);
+        ORG_ID = "m-6bc2e5f029c940a89d872fa2598597d2";
+
+        return true;
     }
 }

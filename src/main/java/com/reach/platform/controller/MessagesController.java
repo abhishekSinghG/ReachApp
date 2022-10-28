@@ -23,4 +23,10 @@ public class MessagesController {
 	public String createUser(@PathVariable final String id, @PathVariable final String username, @PathVariable final String password) {
 		return messagesService.createUser(id, username, password);
 	}
+
+	@GetMapping("/deleteAlias/alias/{alias}/user/{username}")
+	public boolean deleteAlias(@PathVariable final String alias, @PathVariable final String username) {
+		return messagesService.deleteAlias(alias, username);
+	}
+
 }
