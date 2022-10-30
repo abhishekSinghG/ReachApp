@@ -41,26 +41,40 @@ public class MessagesService {
     }
 
     public String createUser(String displayName, String username, String password) {
-        CreateUserRequest createUserRequest = new CreateUserRequest().withDisplayName(displayName).withName(username).withPassword(password).withOrganizationId(ORG_ID);
-        CreateUserResult createUserResult = amazonWorkMail.createUser(createUserRequest);
+        try{
+            CreateUserRequest createUserRequest = new CreateUserRequest().withDisplayName(displayName).withName(username).withPassword(password).withOrganizationId(ORG_ID);
+            CreateUserResult createUserResult = amazonWorkMail.createUser(createUserRequest);
 
 //        String entityId = createUserResult.getUserId();
-        ORG_ID = "m-6bc2e5f029c940a89d872fa2598597d2";
-        String entityId = "bbef253a-eed7-4428-aaaf-cc664773758a";
-        //username = "asdf@reach-apps.awsapps.com";
-        CreateAliasRequest createAliasRequest = new CreateAliasRequest().withAlias(username).withEntityId(entityId).withOrganizationId(ORG_ID);
-        amazonWorkMail.createAlias(createAliasRequest);
+            ORG_ID = "m-6bc2e5f029c940a89d872fa2598597d2";
+//        String entityId = "bbef253a-eed7-4428-aaaf-cc664773758a";
+            String entityId = "6395098b-77b0-4586-b740-ab158365a026";
+            //username ="asdf@reach-apps.awsapps.com";
+            CreateAliasRequest createAliasRequest = new CreateAliasRequest().withAlias(username).withEntityId(entityId).withOrganizationId(ORG_ID);
+            amazonWorkMail.createAlias(createAliasRequest);
 //        UpdatePrimaryEmailAddressRequest updatePrimaryEmailAddressRequest = new UpdatePrimaryEmailAddressRequest().withEmail(username+ "@reach-apps.awsapps.com").withEntityId(entityId).withOrganizationId(ORG_ID);
 //        amazonWorkMail.updatePrimaryEmailAddress(updatePrimaryEmailAddressRequest);
-        return "mailbox1@reach-apps.awsapps.com";
+            return "mailbox_1@reachmsg.com";
+        }
+        catch(Exception ex){
+            System.out.println("Exception :" + ex.toString());
+            return "Exception :" + ex.toString();
+        }
+
     }
 
-    public boolean deleteAlias(String alias, String username) {
-        String entityId = "bbef253a-eed7-4428-aaaf-cc664773758a";
-        DeleteAliasRequest deleteAliasRequest = new DeleteAliasRequest().withAlias(alias).withEntityId(entityId).withOrganizationId(ORG_ID);
-        DeleteAliasResult deleteAliasResult = amazonWorkMail.deleteAlias(deleteAliasRequest);
-        ORG_ID = "m-6bc2e5f029c940a89d872fa2598597d2";
+    public String deleteAlias(String alias, String username) {
+        try {
+//        String entityId = "bbef253a-eed7-4428-aaaf-cc664773758a";
+            String entityId = "6395098b-77b0-4586-b740-ab158365a026";
+            DeleteAliasRequest deleteAliasRequest = new DeleteAliasRequest().withAlias(alias).withEntityId(entityId).withOrganizationId(ORG_ID);
+            DeleteAliasResult deleteAliasResult = amazonWorkMail.deleteAlias(deleteAliasRequest);
+            ORG_ID = "m-6bc2e5f029c940a89d872fa2598597d2";
 
-        return true;
+            return "Done";
+        }
+        catch(Exception ex){
+            return "Exception :" + ex.toString();
+        }
     }
 }
