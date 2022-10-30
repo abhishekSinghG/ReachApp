@@ -25,7 +25,7 @@ public class MessagesController {
 	}
 
 	@GetMapping("/deleteAlias/alias/{alias}/user/{username}")
-	public boolean deleteAlias(@PathVariable final String alias, @PathVariable final String username) {
+	public String deleteAlias(@PathVariable final String alias, @PathVariable final String username) {
 		return messagesService.deleteAlias(alias, username);
 	}
 
