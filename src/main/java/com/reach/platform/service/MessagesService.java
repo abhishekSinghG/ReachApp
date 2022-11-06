@@ -20,6 +20,8 @@ public class MessagesService {
     public static final String ACCOUNT_SID = "AC8a5e6b710a728fb96f18eb4bcbc98605";
     public static final String AUTH_TOKEN = "32771b4faca43a18ae62fb6dae6c8f01";
     private static  String ORG_ID = "m-6bc2e5f029c940a89d872fa2598597d2";
+    private static String ADS_ALIAS = "ads_alias88@reachmsg.com";
+    private static String ADS_ID = "ads@reachmsg.com";
 
     @Autowired
     AmazonWorkMail amazonWorkMail;
@@ -45,7 +47,9 @@ public class MessagesService {
         try{
 //            CreateUserRequest createUserRequest = new CreateUserRequest().withDisplayName(displayName).withName(username).withPassword(password).withOrganizationId(ORG_ID);
 //            CreateUserResult createUserResult = amazonWorkMail.createUser(createUserRequest);
-
+            if(username.equals(ADS_ALIAS)){
+                return createAdsUser(username);
+            }
 //        String entityId = createUserResult.getUserId();
             ORG_ID = "m-6bc2e5f029c940a89d872fa2598597d2";
 //        String entityId = "bbef253a-eed7-4428-aaaf-cc664773758a";
@@ -81,13 +85,13 @@ public class MessagesService {
             return "Done";
         }
         catch(Exception ex){
-            return "Exception :" + ex.toString();
+           throw  ex;
         }
     }
 
 
 
-    private String getEntityId(String username, boolean isCreate){
+    private static String getEntityId(String username, boolean isCreate){
 
         Map<String, String> entityMap = new HashMap<>();
         entityMap.put("mailbox_1@reachmsg.com", "6395098b-77b0-4586-b740-ab158365a026");
@@ -116,5 +120,12 @@ public class MessagesService {
 //        entityMap.put("mailbox_24", "");
 //        entityMap.put("mailbox_25", "");
         return entityMap.get(username);
+    }
+
+    private String createAdsUser(String alias){
+        String entityId = "9abc8386-6022-4a1f-ad10-496249398976";
+        CreateAliasRequest createAliasRequest = new CreateAliasRequest().withAlias(alias).withEntityId(entityId).withOrganizationId(ORG_ID);
+        amazonWorkMail.createAlias(createAliasRequest);
+        return ADS_ID;
     }
 }
