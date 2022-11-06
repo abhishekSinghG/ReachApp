@@ -20,7 +20,7 @@ public class MessagesService {
     public static final String ACCOUNT_SID = "AC8a5e6b710a728fb96f18eb4bcbc98605";
     public static final String AUTH_TOKEN = "32771b4faca43a18ae62fb6dae6c8f01";
     private static  String ORG_ID = "m-6bc2e5f029c940a89d872fa2598597d2";
-    private static String ADS_ALIAS = "ads_alias88@reachmsg.com";
+    private static String ADS_ALIAS = "ads_alias@reachmsg.com";
     private static String ADS_ID = "ads@reachmsg.com";
 
     @Autowired
