@@ -68,7 +68,8 @@ public class MessagesService {
         }
         catch(Exception ex){
             System.out.println("Exception :" + ex.toString());
-            return "Exception :" + ex.toString();
+//            return "Exception :" + ex.toString();
+            throw ex;
         }
 
     }
