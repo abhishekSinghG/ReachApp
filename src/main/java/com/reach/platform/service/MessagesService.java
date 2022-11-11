@@ -64,6 +64,7 @@ public class MessagesService {
             amazonWorkMail.createAlias(createAliasRequest);
 //        UpdatePrimaryEmailAddressRequest updatePrimaryEmailAddressRequest = new UpdatePrimaryEmailAddressRequest().withEmail(username+ "@reach-apps.awsapps.com").withEntityId(entityId).withOrganizationId(ORG_ID);
 //        amazonWorkMail.updatePrimaryEmailAddress(updatePrimaryEmailAddressRequest);
+            System.out.printf("Successfully created Alias for %s : in mailbox : %s " , username, mailbox);
             return mailbox;
         }
         catch(Exception ex){
