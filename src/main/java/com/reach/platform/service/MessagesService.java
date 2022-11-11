@@ -50,16 +50,11 @@ public class MessagesService {
             if(username.equals(ADS_ALIAS)){
                 return createAdsUser(username);
             }
-//        String entityId = createUserResult.getUserId();
-            ORG_ID = "m-6bc2e5f029c940a89d872fa2598597d2";
-//        String entityId = "bbef253a-eed7-4428-aaaf-cc664773758a";
-//            String entityId = "6395098b-77b0-4586-b740-ab158365a026";
             Random random = new Random();
             int x = random.nextInt(21) + 1;
             String mailbox = String.format("mailbox_%d@reachmsg.com" ,
                     x);
             String entityId = getEntityId(mailbox,true);
-            //username ="asdf@reach-apps.awsapps.com";
             CreateAliasRequest createAliasRequest = new CreateAliasRequest().withAlias(username).withEntityId(entityId).withOrganizationId(ORG_ID);
             amazonWorkMail.createAlias(createAliasRequest);
 //        UpdatePrimaryEmailAddressRequest updatePrimaryEmailAddressRequest = new UpdatePrimaryEmailAddressRequest().withEmail(username+ "@reach-apps.awsapps.com").withEntityId(entityId).withOrganizationId(ORG_ID);
@@ -69,7 +64,6 @@ public class MessagesService {
         }
         catch(Exception ex){
             System.out.println("Exception :" + ex.toString());
-//            return "Exception :" + ex.toString();
             throw ex;
         }
 
@@ -82,11 +76,11 @@ public class MessagesService {
             String entityId = getEntityId(username, false);
             DeleteAliasRequest deleteAliasRequest = new DeleteAliasRequest().withAlias(alias).withEntityId(entityId).withOrganizationId(ORG_ID);
             DeleteAliasResult deleteAliasResult = amazonWorkMail.deleteAlias(deleteAliasRequest);
-            ORG_ID = "m-6bc2e5f029c940a89d872fa2598597d2";
-
+            System.out.printf("Successfully deleted Alias : %s  in mailbox : %s " , alias, username);
             return "Done";
         }
         catch(Exception ex){
+            System.out.println("Deletion Exception :" + ex.toString());
            throw  ex;
         }
     }
