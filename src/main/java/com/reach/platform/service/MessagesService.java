@@ -47,6 +47,9 @@ public class MessagesService {
         try{
 //            CreateUserRequest createUserRequest = new CreateUserRequest().withDisplayName(displayName).withName(username).withPassword(password).withOrganizationId(ORG_ID);
 //            CreateUserResult createUserResult = amazonWorkMail.createUser(createUserRequest);
+            long startTime = System.currentTimeMillis();
+            System.out.printf("Call Start Time for Alias : %s is Timestamp : %d  \n", username, startTime);
+
             if(username.equals(ADS_ALIAS)){
                 return createAdsUser(username);
             }
@@ -59,11 +62,12 @@ public class MessagesService {
             amazonWorkMail.createAlias(createAliasRequest);
 //        UpdatePrimaryEmailAddressRequest updatePrimaryEmailAddressRequest = new UpdatePrimaryEmailAddressRequest().withEmail(username+ "@reach-apps.awsapps.com").withEntityId(entityId).withOrganizationId(ORG_ID);
 //        amazonWorkMail.updatePrimaryEmailAddress(updatePrimaryEmailAddressRequest);
-            System.out.printf("Successfully created Alias for %s : in mailbox : %s " , username, mailbox);
+            System.out.printf("Call Start Time for Alias : %s is Timestamp : %d  \n", username, System.currentTimeMillis());
+            System.out.printf("Successfully created Alias for %s : in mailbox : %s  \n" , username, mailbox);
             return mailbox;
         }
         catch(Exception ex){
-            System.out.println("Exception :" + ex.toString());
+            System.out.println("Exception :" + ex.toString() + " \n");
             throw ex;
         }
 
@@ -76,11 +80,11 @@ public class MessagesService {
             String entityId = getEntityId(username, false);
             DeleteAliasRequest deleteAliasRequest = new DeleteAliasRequest().withAlias(alias).withEntityId(entityId).withOrganizationId(ORG_ID);
             DeleteAliasResult deleteAliasResult = amazonWorkMail.deleteAlias(deleteAliasRequest);
-            System.out.printf("Successfully deleted Alias : %s  in mailbox : %s " , alias, username);
+            System.out.printf("Successfully deleted Alias : %s  in mailbox : %s  \n" , alias, username);
             return "Done";
         }
         catch(Exception ex){
-            System.out.println("Deletion Exception :" + ex.toString());
+            System.out.println("Deletion Exception :" + ex.toString() + "\n");
            throw  ex;
         }
     }
