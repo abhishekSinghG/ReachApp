@@ -29,4 +29,10 @@ public class MessagesController {
 		return messagesService.deleteAlias(alias, username);
 	}
 
+	@GetMapping("/ping")
+	public boolean basicPing(){
+		System.out.println("Basic Ping timestamp: " + System.currentTimeMillis());
+		return true;
+	}
+
 }
